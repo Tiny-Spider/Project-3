@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
-
+    
     public string playerName;
     public static GameManager instance { private set; get; }
     public string uniqueGameType = "brawl_battles";
