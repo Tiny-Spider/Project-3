@@ -11,7 +11,6 @@ public class NetworkManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
-        P
     }
 
     void StartServer()
