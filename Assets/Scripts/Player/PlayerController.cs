@@ -1,35 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Movement : MonoBehaviour {
-
+[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerController : MonoBehaviour {
     private Player player;
+    private Rigidbody2D _rigidBody2D;
 
-
-    void Awake() 
-    {
+    void Awake() {
         player = GetComponent<Player>();
+        _rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
-        if (Input.GetKey(KeyManager.moveUp))
-        {
-            gameObject.transform.Translate(Vector3.forward* player.speed *Time.deltaTime);
-        }
+        Vector2 direction = new Vector2((int)Input.GetAxis("Horizontal"), (int)Input.GetAxis("Vertical"));
+        direction.Normalize();
 
-        if (Input.GetKey(KeyManager.moveDown))
-        {
-            gameObject.transform.Translate(Vector3.forward * -player.speed * Time.deltaTime);
-        }
+        Debug.Log(Input.GetAxis("Horizontal"));
+        Debug.Log(Input.GetAxis("Vertical"));
 
-        if (Input.GetKey(KeyManager.moveRight))
-        {
-            gameObject.transform.Translate(Vector3.right * player.speed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyManager.moveLeft))
-        {
-            gameObject.transform.Translate(Vector3.right * -player.speed * Time.deltaTime);
-        }
+        if (direction.sqrMagnitude > 0.1)
+        _rigidBody2D.MovePosition((Vector2)transform.position + (direction * player.speed) * Time.deltaTime);
     }
 }

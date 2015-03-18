@@ -312,10 +312,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2087743955}
+  - 114: {fileID: 2087743956}
+  - 114: {fileID: 2087743957}
   - 33: {fileID: 2087743954}
   - 23: {fileID: 2087743952}
-  - 114: {fileID: 2087743957}
-  - 114: {fileID: 2087743956}
   - 61: {fileID: 2087743953}
   - 50: {fileID: 2087743958}
   m_Layer: 0
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087743951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 804b27bc2787b4c4b91062da7921239b, type: 3}
+  m_Script: {fileID: 11500000, guid: 33b9027cf4ca13743a01e333dcc64c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!50 &2087743958
