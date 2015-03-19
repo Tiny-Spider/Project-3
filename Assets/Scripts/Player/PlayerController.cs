@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
         _rigidBody2D.MovePosition((Vector2)transform.position + (direction * player.speed) * Time.deltaTime);
 
         Vector2 mousePosition = playerCamera.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(mousePosition);
+        //Debug.Log(mousePosition);
         //transform.rotation = transform.LookAt()
     }
 }
