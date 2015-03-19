@@ -25,12 +25,11 @@ public class SimpleWorldGenerator : WorldGenerator {
         for (int i = 0; i < treeAmount; i++) {
             Vector2 position = new Vector2(Random.Range(0, width), Random.Range(0, height));
 
-        Back:
             while (usedPositions.Contains(position)) {
                 position = new Vector2(Random.Range(0, width), Random.Range(0, height));
             }
 
-            if (world.worldData)
+            //if (world.worldData)
 
             Debug.Log("Spawning tree at: " + position.ToString());
 
