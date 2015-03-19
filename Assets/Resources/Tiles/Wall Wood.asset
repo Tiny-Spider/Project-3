@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f37beaf4b13175c43927e994d61ba7ff, type: 3}
-  m_Name: Pillar Tile
+  m_Name: Wall Wood
   m_EditorClassIdentifier: 
-  displayName: Pillar Tile
-  techName: pillar
-  id: 1
-  tile: {fileID: 11448178, guid: a2c4a4aa598b58a4cbc0096b4da83547, type: 2}
+  displayName: Wooden Wall
+  techName: wallWood
+  id: 4
+  tile: {fileID: 11457048, guid: 5183315e85837c743b19052840cd4b81, type: 2}

@@ -24,6 +24,16 @@ public class TileManager : MonoBehaviour {
         return tilesData[0];
     }
 
+    public TileData GetTile(byte id) {
+        foreach (TileData tileData in tilesData) {
+            if (tileData.id == id) {
+                return tileData;
+            }
+        }
+
+        return tilesData[0];
+    }
+
     public string GetName(Tile tile) {
         foreach (TileData tileData in tilesData) {
             if (tileData.tile.Equals(tile)) {

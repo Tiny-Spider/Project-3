@@ -8,6 +8,6 @@ public class World : MonoBehaviour {
     public string seed;
 
     void Start() {
-        worldGenerator.GenerateWorld(this, 20, 20, seed, tileManager);
+        worldGenerator.GenerateWorld(this, 50, 50, seed, tileManager);
     }
 }
