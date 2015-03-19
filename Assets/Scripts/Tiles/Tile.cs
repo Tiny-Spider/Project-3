@@ -4,8 +4,6 @@ using System.Collections;
 public class Tile : MonoBehaviour {
     public bool hasDirections = false;
 
-    private Direction currentDirection = Direction.North;
-
     public GameObject northGameObject;
     public GameObject eastGameObject;
     public GameObject southGameObject;
