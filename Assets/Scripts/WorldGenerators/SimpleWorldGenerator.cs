@@ -26,78 +26,67 @@ public class SimpleWorldGenerator : WorldGenerator {
         LoadTiles();
 
         byte[,] worldData = new byte[height, width];
-        HashSet<Vector2> usedPositions = new HashSet<Vector2>();
 
         // Walls
-
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
 
                 if (y == 1 || y == height - 1 || x == 1 || x == width - 1) {
                     worldData[x, y] = woodWall.id;
-
-                    usedPositions.Add(new Vector2(x, y));
                 }
                 if (y == 0 || y == height || x == 0 || x == width) {
                     worldData[x, y] = empty.id;
-
-                    usedPositions.Add(new Vector2(x, y));
                 }
             }
         }
 
 
         // Tree Gen
-
         int treeAmount = Random.Range((height * width) / minTrees, (height * width) / maxTrees);
         for (int i = 0; i < treeAmount; i++) {
-            Vector2 position = new Vector2(Random.Range(0, width), Random.Range(0, height));
+            int x = Random.Range(0, width);
+            int y = Random.Range(0, height);
 
-            while (usedPositions.Contains(position)) {
-                position = new Vector2(Random.Range(0, width), Random.Range(0, height));
+            while (worldData[x, y] != 0) {
+                x = Random.Range(0, width);
+                y = Random.Range(0, height);
             }
 
-            //if (world.worldData)
+            //Debug.Log("Spawning tree at: " + x + ", " + y);
 
-            Debug.Log("Spawning tree at: " + position.ToString());
-
-            usedPositions.Add(position);
-
-            worldData[(int) position.x, (int) position.y] = tree.id;
+            worldData[x, y] = tree.id;
         }
 
         // Pillar Gen
-
         int pillarAmount = Random.Range((height * width) / minPillars, (height * width) / maxPillars);
         for (int i = 0; i < pillarAmount; i++) {
-            Vector2 position = new Vector2(Random.Range(0, width), Random.Range(0, height));
+            int x = Random.Range(0, width);
+            int y = Random.Range(0, height);
 
-            while (usedPositions.Contains(position)) {
-                position = new Vector2(Random.Range(0, width), Random.Range(0, height));
+            while (worldData[x, y] != 0) {
+                x = Random.Range(0, width);
+                y = Random.Range(0, height);
             }
 
-            Debug.Log("Spawning pillar at: " + position.ToString());
+            //Debug.Log("Spawning pillar at: " + x + ", " + y);
 
-            usedPositions.Add(position);
-
-            worldData[(int)position.x, (int)position.y] = pillar.id;
+            worldData[x, y] = pillar.id;
         }
 
         // Rock Gen
-
         int rockAmount = Random.Range((height * width) / minRocks, (height * width) / maxRocks);
         for (int i = 0; i < rockAmount; i++) {
-            Vector2 position = new Vector2(Random.Range(0, width), Random.Range(0, height));
+            int x = Random.Range(0, width);
+            int y = Random.Range(0, height);
 
-            while (usedPositions.Contains(position)) {
-                position = new Vector2(Random.Range(0, width), Random.Range(0, height));
+            while (worldData[x, y] != 0) {
+                x = Random.Range(0, width);
+                y = Random.Range(0, height);
             }
 
-            Debug.Log("Spawning rock at: " + position.ToString());
+            //Debug.Log("Spawning rock at: " + x + ", " + y);
 
-            usedPositions.Add(position);
-
-            worldData[(int)position.x, (int)position.y] = rock.id;
+            worldData[x, y] = rock.id;
         }
 
         world.worldData = worldData;
