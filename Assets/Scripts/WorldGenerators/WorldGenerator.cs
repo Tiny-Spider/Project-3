@@ -3,6 +3,8 @@ using System.Collections;
 
 public abstract class WorldGenerator {
     private TileManager tileManager;
+    private Transform worldHolder;
+
     protected World world;
 
     public void GenerateWorld(World world, int height, int width, string seed, TileManager tileManager) {
@@ -14,6 +16,7 @@ public abstract class WorldGenerator {
     public void GenerateWorld(World world, int height, int width, TileManager tileManager) {
         this.world = world;
         this.tileManager = tileManager;
+        worldHolder = GameObject.Find("World Holder").transform;
 
         Generate(height, width);
     }
@@ -30,6 +33,7 @@ public abstract class WorldGenerator {
                 if (tile.tile != null) {
                     Tile spawnedTile = GameObject.Instantiate(tile.tile);
                     spawnedTile.transform.position = new Vector2(x, y);
+                    spawnedTile.transform.SetParent(worldHolder);
                     spawnedTile.gameObject.name = new Vector2(x, y).ToString();
 
                     if (spawnedTile.hasDirections) {

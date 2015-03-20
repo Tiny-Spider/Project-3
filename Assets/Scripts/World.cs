@@ -10,4 +10,14 @@ public class World : MonoBehaviour {
     void Start() {
         worldGenerator.GenerateWorld(this, 50, 50, seed, tileManager);
     }
+
+    public void GenerateRandom() {
+        Transform worldHolder = GameObject.Find("World Holder").transform;
+
+        foreach (Transform child in worldHolder) {
+            Destroy(child.gameObject);
+        }
+
+        worldGenerator.GenerateWorld(this, 50, 50, tileManager);
+    }
 }
