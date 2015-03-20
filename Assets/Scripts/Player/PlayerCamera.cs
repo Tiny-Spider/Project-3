@@ -11,7 +11,7 @@ public class PlayerCamera : MonoBehaviour {
     public float yOffset;
 	
 	// Update is called once per frame
-    void Update() {
+    void LateUpdate() {
         Vector3 targetPosition = playerPosition.position;
         targetPosition.z += +cameraDistance;
         targetPosition.y += yOffset;
