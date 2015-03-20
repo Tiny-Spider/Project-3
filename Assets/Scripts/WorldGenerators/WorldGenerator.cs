@@ -25,12 +25,34 @@ public abstract class WorldGenerator {
 
         for (int x = 0; x < worldData.GetLength(0); x++) {
             for (int y = 0; y < worldData.GetLength(1); y++) {
-                Tile tile = tileManager.GetTile(worldData[x, y]).tile;
+                TileData tile = tileManager.GetTile(worldData[x, y]);
 
-                if (tile != null) {
-                    Tile spawnedTile = GameObject.Instantiate(tile);
+                if (tile.tile != null) {
+                    Tile spawnedTile = GameObject.Instantiate(tile.tile);
                     spawnedTile.transform.position = new Vector2(x, y);
-                    spawnedTile.gameObject.name = x + ", " + y;
+                    spawnedTile.gameObject.name = new Vector2(x, y).ToString();
+
+                    if (spawnedTile.hasDirections) {
+                        // West
+                        if (x > 0 && worldData[x - 1, y] == tile.id) {
+                            spawnedTile.SetDirection(Direction.West);
+                        }
+
+                        // East
+                        if (x < worldData.GetLength(0) - 1 && worldData[x + 1, y] == tile.id) {
+                            spawnedTile.SetDirection(Direction.East);
+                        }
+
+                        // South
+                        if (y > 0 && worldData[x, y - 1] == tile.id) {
+                            spawnedTile.SetDirection(Direction.South);
+                        }
+
+                        // North
+                        if (y < worldData.GetLength(1) - 1 && worldData[x, y + 1] == tile.id) {
+                            spawnedTile.SetDirection(Direction.North);
+                        }
+                    }
                 }
             }
         }
