@@ -23,4 +23,28 @@ public static class ExtensionMethods {
     public static bool EqualsIgnoreCase(this string text, string compareTo) {
         return text.Equals(compareTo, StringComparison.InvariantCultureIgnoreCase);
     }
+
+    /// <summary>
+    /// Make transform look at an Vector2 point in world space
+    /// Defaults to up position
+    /// </summary>
+    /// <param name="target"></param>
+    public static void LookAt2D(this Transform transform, Vector2 target) {
+        Vector3 dir = ((Vector3) target) - transform.position;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90F;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    /// <summary>
+    /// Make transform look at an Vector2 point in world space
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="up"></param>
+    public static void LookAt2D(this Transform transform, Vector2 target, Direction direction) {
+        Vector3 dir = ((Vector3)target) - transform.position;
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + ((int) direction);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
 }

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 tempPosition = hit.point;
             tempPosition.z = 0;
 
-            transform.LookAt(tempPosition);
+            transform.LookAt2D(tempPosition);
         }
             
     }
