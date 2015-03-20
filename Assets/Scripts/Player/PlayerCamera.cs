@@ -11,10 +11,12 @@ public class PlayerCamera : MonoBehaviour {
     public float yOffset;
 	
 	// Update is called once per frame
-	void Update () {
+    void Update() {
         Vector3 targetPosition = playerPosition.position;
-        targetPosition.z += + cameraDistance;
+        targetPosition.z += +cameraDistance;
         targetPosition.y += yOffset;
         transform.position = Vector3.Lerp(transform.position, targetPosition, lerpSpeed * Time.deltaTime);
-	}
+
+
+    }
 }
