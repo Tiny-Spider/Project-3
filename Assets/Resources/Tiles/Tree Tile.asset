@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Tree Tile
   techName: tree
-  id: 1
+  id: 3
   tile: {fileID: 11457294, guid: ca33b59751267b24dbd3bf9352530803, type: 2}
