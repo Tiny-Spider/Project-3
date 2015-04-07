@@ -25,21 +25,31 @@ public class SimpleWorldGenerator : WorldGenerator {
     public override void Generate(int height, int width) {
         LoadTiles();
 
-        byte[,] worldData = new byte[height, width];
+        byte[,] worldData = new byte[width, height];
+
+        Debug.Log("Generating: " + width + ", " + height);
 
         // Walls
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
 
-                if (y == 1 || y == height - 1 || x == 1 || x == width - 1) {
-                    worldData[x, y] = woodWall.id;
-                }
-                if (y == 0 || y == height || x == 0 || x == width) {
-                    worldData[x, y] = empty.id;
-                }
+              if (y == 0 || y == height - 1 || x == 0 || x == width - 1) {
+                  worldData[x, y] = empty.id;
+              }
+              if (x > 0 && x < width - 1 && y > 0 && y < height - 1) {
+                    if (y == 1 || y == height - 2 || x == 1 || x == width - 2) {
+                        worldData[x, y] = woodWall.id;
+                    }
+               }
+
             }
         }
 
+        //worldData[0, 0] = tree.id;
+        //worldData[1, 1] = tree.id;
+        //worldData[width, height] = tree.id;
+        //worldData[width - 1, height - 1] = tree.id;
+        //worldData[width - 2, height - 2] = tree.id;
 
         // Tree Gen
         int treeAmount = Random.Range((height * width) / minTrees, (height * width) / maxTrees);

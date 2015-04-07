@@ -6,9 +6,10 @@ public class World : MonoBehaviour {
     public WorldGenerator worldGenerator = new SimpleWorldGenerator();
     public TileManager tileManager;
     public string seed;
+    public int width, height;
 
-    void Start() {
-        worldGenerator.GenerateWorld(this, 50, 50, seed, tileManager);
+    void Awake() {
+        worldGenerator.GenerateWorld(this, width, height, seed, tileManager);
     }
 
     public void GenerateRandom() {
@@ -18,6 +19,6 @@ public class World : MonoBehaviour {
             Destroy(child.gameObject);
         }
 
-        worldGenerator.GenerateWorld(this, 50, 50, tileManager);
+        worldGenerator.GenerateWorld(this, width, height, tileManager);
     }
 }

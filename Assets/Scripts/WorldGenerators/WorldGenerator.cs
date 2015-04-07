@@ -28,9 +28,9 @@ public abstract class WorldGenerator {
 
         for (int x = 0; x < worldData.GetLength(0); x++) {
             for (int y = 0; y < worldData.GetLength(1); y++) {
-                TileData tile = tileManager.GetTile(worldData[x, y]);
+                TileData tile = TileManager.GetTileData(worldData[x, y]);
 
-                if (tile.tile != null) {
+                if (tile != null && tile.tile != null) {
                     Tile spawnedTile = GameObject.Instantiate(tile.tile);
                     spawnedTile.transform.position = new Vector2(x, y);
                     spawnedTile.transform.SetParent(worldHolder);
@@ -63,7 +63,7 @@ public abstract class WorldGenerator {
     }
 
     protected TileData LoadTile(string tileName, bool important) {
-        TileData tile = tileManager.GetTile(tileName);
+        TileData tile = TileManager.GetTileData(tileName);
 
         if (tile == null && important) {
             throw new UnassignedReferenceException("World Gen: Important tile could not be found! Tile: " + tileName);
