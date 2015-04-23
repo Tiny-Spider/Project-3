@@ -14,4 +14,5 @@ MonoBehaviour:
   displayName: Wooden Wall
   techName: wallWood
   id: 4
-  tile: {fileID: 11457048, guid: 5183315e85837c743b19052840cd4b81, type: 2}
+  movementPenalty: 0
+  tile: {fileID: 11442350, guid: 4865a13f848d5c4438eefd812bb35dd1, type: 2}
